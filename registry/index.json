@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated": "2025-12-25T02:55:00.000000",
+  "updated": "2025-12-24T22:08:23.371159",
   "registry": "https://github.com/thihasithuleon369kk-rgb/ui_registry",
   "packs": [
     {
@@ -47,8 +47,34 @@
       "dependencies": {
         "smooth_page_indicator": "^1.1.0"
       },
-      "createdAt": "2025-12-24T19:27:33Z",
-      "updatedAt": "2025-12-25T02:55:00Z"
+      "createdAt": "2025-12-24T19:56:58Z",
+      "updatedAt": "2025-12-24T19:56:58Z"
+    },
+    {
+      "id": "new_pack_test_r",
+      "name": "New UI Pack",
+      "description": "fas",
+      "version": "1.0.0",
+      "author": "fsda",
+      "authorUrl": null,
+      "license": "MIT",
+      "tags": [
+        "afs"
+      ],
+      "downloads": 0,
+      "downloadUrl": "https://github.com/thihasithuleon369kk-rgb/ui_registry/raw/main/packs/new_pack_test_r/1.0.0/bundle.zip",
+      "previews": [],
+      "screens": [
+        {
+          "name": "example_screen",
+          "route": "/example_screen",
+          "file": "screens/example_screen.dart"
+        }
+      ],
+      "flutter": ">=3.10.0 <4.0.0",
+      "dependencies": {},
+      "createdAt": "2025-12-24T22:08:22.222120",
+      "updatedAt": "2025-12-24T22:08:22.223228"
     }
   ]
 }
