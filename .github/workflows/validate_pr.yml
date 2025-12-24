@@ -1,0 +1,79 @@
+name: Validate Pack PR
+
+on:
+  pull_request:
+    paths:
+      - 'packs/**'
+
+jobs:
+  validate:
+    name: Validate UI Pack
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+
+      - name: Get changed packs
+        id: changed
+        run: |
+          CHANGED=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep '^packs/' | cut -d'/' -f2 | sort -u)
+          echo "packs=$CHANGED" >> $GITHUB_OUTPUT
+
+      - name: Validate pack structure
+        run: dart run scripts/validate_pack.dart ${{ steps.changed.outputs.packs }}
+
+      - name: Check manifest
+        run: |
+          for pack in ${{ steps.changed.outputs.packs }}; do
+            if [ -f "packs/$pack/manifest.json" ]; then
+              echo "✓ Found manifest for $pack"
+              # Validate JSON
+              cat "packs/$pack/manifest.json" | jq . > /dev/null
+            else
+              echo "✗ Missing manifest.json for $pack"
+              exit 1
+            fi
+          done
+
+      - name: Check for required files
+        run: |
+          for pack in ${{ steps.changed.outputs.packs }}; do
+            # Check for at least one version
+            if [ ! -d "packs/$pack/versions" ] || [ -z "$(ls -A packs/$pack/versions 2>/dev/null)" ]; then
+              echo "✗ No versions found for $pack"
+              exit 1
+            fi
+            echo "✓ $pack has version files"
+          done
+
+      - name: Comment on PR
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '✅ Pack validation passed! Ready for review.'
+            })
+
+      - name: Comment on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '❌ Pack validation failed. Please check the workflow logs for details.'
+            })

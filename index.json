@@ -1,0 +1,54 @@
+{
+  "version": "1.0",
+  "updated": "2025-12-25T02:32:01.260580",
+  "registry": "https://github.com/thihako2/ui_market",
+  "packs": [
+    {
+      "id": "onboarding_pack",
+      "name": "Modern Onboarding Pack",
+      "description": "Beautiful onboarding screens with smooth page transitions and modern design",
+      "version": "1.0.0",
+      "author": "UI Marketplace Team",
+      "authorUrl": "https://github.com/your-org",
+      "license": "MIT",
+      "tags": [
+        "onboarding",
+        "welcome",
+        "intro",
+        "modern",
+        "animated"
+      ],
+      "downloads": 0,
+      "downloadUrl": "https://github.com/thihako2/ui_market/releases/download/onboarding_pack-1.0.0/bundle.zip",
+      "previews": [
+        "https://github.com/thihako2/ui_market/releases/download/onboarding_pack-1.0.0/preview_1.png"
+      ],
+      "screens": [
+        {
+          "name": "WelcomeScreen",
+          "route": "/welcome",
+          "file": "screens/welcome_screen.dart",
+          "description": "Initial welcome screen with app branding"
+        },
+        {
+          "name": "FeaturesScreen",
+          "route": "/features",
+          "file": "screens/features_screen.dart",
+          "description": "Feature highlight carousel"
+        },
+        {
+          "name": "GetStartedScreen",
+          "route": "/get-started",
+          "file": "screens/get_started_screen.dart",
+          "description": "Final call-to-action screen"
+        }
+      ],
+      "flutter": ">=3.10.0 <4.0.0",
+      "dependencies": {
+        "smooth_page_indicator": "^1.1.0"
+      },
+      "createdAt": "2025-12-24T19:27:33Z",
+      "updatedAt": "2025-12-24T19:27:33Z"
+    }
+  ]
+}
