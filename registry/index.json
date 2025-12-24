@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated": "2025-12-24T22:19:21.728411",
+  "updated": "2025-12-24T22:28:00.202981",
   "registry": "https://github.com/thihasithuleon369kk-rgb/ui_registry",
   "packs": [
     {
@@ -73,8 +73,8 @@
       ],
       "flutter": ">=3.10.0 <4.0.0",
       "dependencies": {},
-      "createdAt": "2025-12-24T22:19:19.997330",
-      "updatedAt": "2025-12-24T22:19:19.998423"
+      "createdAt": "2025-12-24T22:27:58.745618",
+      "updatedAt": "2025-12-24T22:27:58.745646"
     },
     {
       "id": "new_packfdsxd",
@@ -99,8 +99,8 @@
       ],
       "flutter": ">=3.10.0 <4.0.0",
       "dependencies": {},
-      "createdAt": "2025-12-24T22:19:21.135875",
-      "updatedAt": "2025-12-24T22:19:21.135918"
+      "createdAt": "2025-12-24T22:27:59.627488",
+      "updatedAt": "2025-12-24T22:27:59.627517"
     },
     {
       "id": "new_packfasla",
@@ -125,8 +125,34 @@
       ],
       "flutter": ">=3.10.0 <4.0.0",
       "dependencies": {},
-      "createdAt": "2025-12-24T22:19:20.492564",
-      "updatedAt": "2025-12-24T22:19:20.492603"
+      "createdAt": "2025-12-24T22:27:59.149264",
+      "updatedAt": "2025-12-24T22:27:59.149296"
+    },
+    {
+      "id": "fsa",
+      "name": "New UI Packfsaf",
+      "description": "fsa",
+      "version": "1.0.0",
+      "author": "fsa",
+      "authorUrl": null,
+      "license": "MIT",
+      "tags": [
+        "fsa"
+      ],
+      "downloads": 0,
+      "downloadUrl": "https://github.com/thihasithuleon369kk-rgb/ui_registry/raw/main/packs/fsa/1.0.0/bundle.zip",
+      "previews": [],
+      "screens": [
+        {
+          "name": "example_screen",
+          "route": "/example_screen",
+          "file": "screens/example_screen.dart"
+        }
+      ],
+      "flutter": ">=3.10.0 <4.0.0",
+      "dependencies": {},
+      "createdAt": "2025-12-24T22:27:58.335115",
+      "updatedAt": "2025-12-24T22:27:58.336489"
     }
   ]
 }
