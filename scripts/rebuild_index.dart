@@ -136,9 +136,8 @@ void main(List<String> args) async {
       ..sort((a, b) => (a['name'] as String).compareTo(b['name'] as String)),
   };
 
-  final rootDir = Directory.current.parent;
-  // Ensure we write to registry/registry/index.json based on repo structure
-  final indexFile = File(path.join(rootDir.path, 'registry', 'index.json'));
+  // Assume running from repo root
+  final indexFile = File('registry/index.json');
 
   if (!await indexFile.parent.exists()) {
     await indexFile.parent.create(recursive: true);
