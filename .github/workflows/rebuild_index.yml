@@ -3,6 +3,9 @@ name: Rebuild Index
 on:
   release:
     types: [published]
+  push:
+    paths:
+      - 'packs/**'
   workflow_dispatch:
 
 jobs:

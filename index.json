@@ -1,13 +1,13 @@
 {
   "version": "1.0",
-  "updated": "2025-12-25T02:32:01.260580",
-  "registry": "https://github.com/thihako2/ui_market",
+  "updated": "2025-12-25T02:55:00.000000",
+  "registry": "https://github.com/thihasithuleon369kk-rgb/ui_registry",
   "packs": [
     {
       "id": "onboarding_pack",
       "name": "Modern Onboarding Pack",
       "description": "Beautiful onboarding screens with smooth page transitions and modern design",
-      "version": "1.0.0",
+      "version": "1.0.2",
       "author": "UI Marketplace Team",
       "authorUrl": "https://github.com/your-org",
       "license": "MIT",
@@ -19,9 +19,9 @@
         "animated"
       ],
       "downloads": 0,
-      "downloadUrl": "https://github.com/thihako2/ui_market/releases/download/onboarding_pack-1.0.0/bundle.zip",
+      "downloadUrl": "https://github.com/thihasithuleon369kk-rgb/ui_registry/releases/download/onboarding_pack-1.0.2/bundle.zip",
       "previews": [
-        "https://github.com/thihako2/ui_market/releases/download/onboarding_pack-1.0.0/preview_1.png"
+        "https://github.com/thihasithuleon369kk-rgb/ui_registry/releases/download/onboarding_pack-1.0.2/preview_1.png"
       ],
       "screens": [
         {
@@ -48,7 +48,7 @@
         "smooth_page_indicator": "^1.1.0"
       },
       "createdAt": "2025-12-24T19:27:33Z",
-      "updatedAt": "2025-12-24T19:27:33Z"
+      "updatedAt": "2025-12-25T02:55:00Z"
     }
   ]
 }

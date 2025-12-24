@@ -5,7 +5,7 @@ import 'package:archive/archive.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as path;
 
-/// Rebuilds index.json from GitHub Releases.
+/// Rebuilds index.json from GitHub Releases and the 'packs/' directory.
 void main(List<String> args) async {
   final repo =
       args.isNotEmpty ? args.first : 'thihasithuleon369kk-rgb/ui_registry';
@@ -13,12 +13,15 @@ void main(List<String> args) async {
 
   print('Rebuilding index for $repo...');
 
-  final releasesUrl = Uri.parse('https://api.github.com/repos/$repo/releases');
   final headers = {
     'Accept': 'application/vnd.github.v3+json',
     if (token != null) 'Authorization': 'token $token',
   };
 
+  final filePacks = await _fetchFilePacks(repo, token, headers);
+  print('Found ${filePacks.length} file-based pack(s).');
+
+  final releasesUrl = Uri.parse('https://api.github.com/repos/$repo/releases');
   print('Fetching releases...');
   final response = await http.get(releasesUrl, headers: headers);
 
@@ -33,10 +36,6 @@ void main(List<String> args) async {
 
   for (final release in releases) {
     final tagName = release['tag_name'] as String;
-    // Tag format: <pack_id>-<version>
-    // But UploadCommand uses: ${manifest.id}-${manifest.version}
-    // We can just rely on the manifest inside the bundle.
-
     print('Processing release $tagName...');
 
     final assets = release['assets'] as List;
@@ -62,11 +61,9 @@ void main(List<String> args) async {
     }
 
     try {
-      // Download bundle to memory
       print('  Downloading bundle from $downloadUrl...');
       final bundleBytes = await http.readBytes(Uri.parse(downloadUrl));
 
-      // Extract manifest
       final archive = ZipDecoder().decodeBytes(bundleBytes);
       final manifestFile = archive.findFile('ui_manifest.json');
 
@@ -78,11 +75,8 @@ void main(List<String> args) async {
       final manifestContent = utf8.decode(manifestFile.content as List<int>);
       final manifest = jsonDecode(manifestContent) as Map<String, dynamic>;
 
-      // Build pack entry
       final packId = manifest['id'] as String;
       final version = manifest['version'] as String;
-
-      // Use release timestamp
       final publishedAt = release['published_at'] as String;
 
       packs.add({
@@ -94,7 +88,7 @@ void main(List<String> args) async {
         'authorUrl': manifest['authorUrl'],
         'license': manifest['license'] ?? 'MIT',
         'tags': manifest['tags'] ?? [],
-        'downloads': 0, // Cannot track downloads easily without external DB
+        'downloads': 0,
         'downloadUrl': downloadUrl,
         'previews': previews,
         'screens': manifest['screens'] ?? [],
@@ -110,10 +104,8 @@ void main(List<String> args) async {
     }
   }
 
-  // Deduplicate: keep only latest version of each pack?
-  // Or list all versions? The RegistryClient fetches the index which lists "packs".
-  // Usually an index lists the *latest* version of each pack.
-  // Let's group by ID and pick latest.
+  // Combine both sources
+  packs.addAll(filePacks);
 
   final latestPacks = <String, Map<String, dynamic>>{};
   for (final pack in packs) {
@@ -121,7 +113,6 @@ void main(List<String> args) async {
     if (!latestPacks.containsKey(id)) {
       latestPacks[id] = pack;
     } else {
-      // Compare versions
       if (_compareVersions(pack['version'], latestPacks[id]!['version']) > 0) {
         latestPacks[id] = pack;
       }
@@ -136,9 +127,7 @@ void main(List<String> args) async {
       ..sort((a, b) => (a['name'] as String).compareTo(b['name'] as String)),
   };
 
-  // Assume running from repo root
   final indexFile = File('registry/index.json');
-
   if (!await indexFile.parent.exists()) {
     await indexFile.parent.create(recursive: true);
   }
@@ -150,12 +139,87 @@ void main(List<String> args) async {
       '\n✓ Generated index.json with ${latestPacks.length} pack(s) at ${indexFile.path}');
 }
 
+Future<List<Map<String, dynamic>>> _fetchFilePacks(
+    String repo, String? token, Map<String, String> headers) async {
+  final result = <Map<String, dynamic>>[];
+  try {
+    final contentsUrl = 'https://api.github.com/repos/$repo/contents/packs';
+    final response = await http.get(Uri.parse(contentsUrl), headers: headers);
+
+    if (response.statusCode != 200) {
+      if (response.statusCode == 404) return [];
+      print('Failed to fetch packs directory: ${response.statusCode}');
+      return [];
+    }
+
+    final packDirs = jsonDecode(response.body) as List;
+    for (final dir in packDirs) {
+      if (dir['type'] != 'dir') continue;
+      final packId = dir['name'] as String;
+      final versionsUrl = dir['url'] as String;
+
+      final vResponse =
+          await http.get(Uri.parse(versionsUrl), headers: headers);
+      if (vResponse.statusCode != 200) continue;
+
+      final versions = jsonDecode(vResponse.body) as List;
+      for (final vDir in versions) {
+        if (vDir['type'] != 'dir') continue;
+        final version = vDir['name'] as String;
+        final bundlePath = '${vDir['path']}/bundle.zip';
+
+        // Check if bundle.zip exists
+        final bundleUrl =
+            'https://api.github.com/repos/$repo/contents/$bundlePath';
+        final bResponse =
+            await http.head(Uri.parse(bundleUrl), headers: headers);
+        if (bResponse.statusCode != 200) continue;
+
+        final downloadUrl = 'https://github.com/$repo/raw/main/$bundlePath';
+
+        try {
+          final bundleBytes = await http.readBytes(Uri.parse(downloadUrl));
+          final archive = ZipDecoder().decodeBytes(bundleBytes);
+          final manifestFile = archive.findFile('ui_manifest.json');
+          if (manifestFile == null) continue;
+
+          final manifestContent =
+              utf8.decode(manifestFile.content as List<int>);
+          final manifest = jsonDecode(manifestContent) as Map<String, dynamic>;
+
+          result.add({
+            'id': packId,
+            'name': manifest['name'] ?? packId,
+            'description': manifest['description'] ?? '',
+            'version': version,
+            'author': manifest['author'] ?? 'Unknown',
+            'authorUrl': manifest['authorUrl'],
+            'license': manifest['license'] ?? 'MIT',
+            'tags': manifest['tags'] ?? [],
+            'downloads': 0,
+            'downloadUrl': downloadUrl,
+            'previews': [],
+            'screens': manifest['screens'] ?? [],
+            'flutter': manifest['flutter'] ?? '>=3.0.0',
+            'dependencies': manifest['dependencies'] ?? {},
+            'createdAt': DateTime.now().toIso8601String(),
+            'updatedAt': DateTime.now().toIso8601String(),
+          });
+          print('  ✓ Added file pack: $packId v$version');
+        } catch (e) {
+          print('  Error processing file pack $packId v$version: $e');
+        }
+      }
+    }
+  } catch (e) {
+    print('Error in _fetchFilePacks: $e');
+  }
+  return result;
+}
+
 Future<String?> _getToken() async {
-  // Check env var
   var token = Platform.environment['GITHUB_TOKEN'];
   if (token != null) return token;
-
-  // Check .ui_market_token in home
   final home =
       Platform.environment['HOME'] ?? Platform.environment['USERPROFILE'];
   if (home != null) {
@@ -175,7 +239,6 @@ bool _isImage(String name) {
 int _compareVersions(String a, String b) {
   final aParts = a.split('.').map(int.tryParse).toList();
   final bParts = b.split('.').map(int.tryParse).toList();
-
   for (var i = 0; i < 3; i++) {
     final aNum = i < aParts.length ? (aParts[i] ?? 0) : 0;
     final bNum = i < bParts.length ? (bParts[i] ?? 0) : 0;

@@ -32,10 +32,11 @@ flutter-ui-registry/
 # Install CLI
 dart pub global activate ui_market
 
-# Upload your pack
-export GITHUB_TOKEN=ghp_yourtoken
+# Upload your pack (no token setup needed!)
 ui_market upload ./my_pack
 ```
+
+> **Note:** Uploads automatically use the shared community registry. No GitHub token configuration is required!
 
 ### Option 2: Pull Request
 
