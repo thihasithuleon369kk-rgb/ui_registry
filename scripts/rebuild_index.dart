@@ -7,7 +7,8 @@ import 'package:path/path.dart' as path;
 
 /// Rebuilds index.json from GitHub Releases.
 void main(List<String> args) async {
-  final repo = args.isNotEmpty ? args.first : 'thihako2/ui_market';
+  final repo =
+      args.isNotEmpty ? args.first : 'thihasithuleon369kk-rgb/ui_registry';
   final token = await _getToken();
 
   print('Rebuilding index for $repo...');
