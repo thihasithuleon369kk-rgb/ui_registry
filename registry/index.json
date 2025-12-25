@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated": "2025-12-25T06:45:52.266480",
+  "updated": "2025-12-25T09:17:37.875419",
   "registry": "https://github.com/thihasithuleon369kk-rgb/ui_registry",
   "packs": [
     {
@@ -103,8 +103,8 @@
       "screens": [],
       "flutter": ">=3.10.0 <4.0.0",
       "dependencies": {},
-      "createdAt": "2025-12-25T06:45:48.844793",
-      "updatedAt": "2025-12-25T06:45:48.844828"
+      "createdAt": "2025-12-25T09:17:32.109420",
+      "updatedAt": "2025-12-25T09:17:32.109455"
     },
     {
       "id": "new_pack_test_r",
@@ -129,8 +129,8 @@
       ],
       "flutter": ">=3.10.0 <4.0.0",
       "dependencies": {},
-      "createdAt": "2025-12-25T06:45:50.082665",
-      "updatedAt": "2025-12-25T06:45:50.082710"
+      "createdAt": "2025-12-25T09:17:33.859198",
+      "updatedAt": "2025-12-25T09:17:33.859239"
     },
     {
       "id": "new_pack_my",
@@ -176,8 +176,8 @@
       ],
       "flutter": ">=3.10.0 <4.0.0",
       "dependencies": {},
-      "createdAt": "2025-12-25T06:45:49.379681",
-      "updatedAt": "2025-12-25T06:45:49.379719"
+      "createdAt": "2025-12-25T09:17:32.977441",
+      "updatedAt": "2025-12-25T09:17:32.977477"
     },
     {
       "id": "new_packfdsxd",
@@ -202,8 +202,8 @@
       ],
       "flutter": ">=3.10.0 <4.0.0",
       "dependencies": {},
-      "createdAt": "2025-12-25T06:45:51.179306",
-      "updatedAt": "2025-12-25T06:45:51.179345"
+      "createdAt": "2025-12-25T09:17:35.571713",
+      "updatedAt": "2025-12-25T09:17:35.571756"
     },
     {
       "id": "new_packfasla",
@@ -228,8 +228,8 @@
       ],
       "flutter": ">=3.10.0 <4.0.0",
       "dependencies": {},
-      "createdAt": "2025-12-25T06:45:50.632777",
-      "updatedAt": "2025-12-25T06:45:50.632819"
+      "createdAt": "2025-12-25T09:17:34.799660",
+      "updatedAt": "2025-12-25T09:17:34.799698"
     },
     {
       "id": "fsa",
@@ -254,8 +254,84 @@
       ],
       "flutter": ">=3.10.0 <4.0.0",
       "dependencies": {},
-      "createdAt": "2025-12-25T06:45:48.255803",
-      "updatedAt": "2025-12-25T06:45:48.257161"
+      "createdAt": "2025-12-25T09:17:31.236866",
+      "updatedAt": "2025-12-25T09:17:31.238146"
+    },
+    {
+      "id": "new_packtestt",
+      "name": "New UI Packtest",
+      "description": "test",
+      "version": "1.0.1",
+      "author": "tkk",
+      "authorUrl": "",
+      "license": "MIT",
+      "tags": [
+        "test"
+      ],
+      "downloads": 0,
+      "downloadUrl": "https://github.com/thihasithuleon369kk-rgb/ui_registry/raw/main/packs/new_packtestt/1.0.1/bundle.zip",
+      "previews": [],
+      "screens": [
+        {
+          "name": "example_screen",
+          "route": "/example_screen",
+          "file": "screens/example_screen.dart",
+          "widgets": []
+        },
+        {
+          "name": "visual_design_screen",
+          "route": "/visual_design_screen",
+          "file": "screens/visual_design_screen.dart",
+          "widgets": [
+            {
+              "id": "1766654097923",
+              "name": "Container 1",
+              "type": 0,
+              "x": 0,
+              "y": 32,
+              "width": 245,
+              "height": 100,
+              "parentId": null,
+              "properties": {
+                "color": 4294967295,
+                "borderRadius": 8
+              }
+            },
+            {
+              "id": "1766654160799",
+              "name": "pack_card",
+              "type": 24,
+              "x": 150,
+              "y": 282,
+              "width": 403,
+              "height": 200,
+              "parentId": null,
+              "properties": {
+                "widgets": [
+                  {
+                    "id": "1766654125505",
+                    "name": "Container 1",
+                    "type": 0,
+                    "x": 20,
+                    "y": 25,
+                    "width": 348,
+                    "height": 107,
+                    "parentId": null,
+                    "properties": {
+                      "color": 4294967295,
+                      "borderRadius": 8
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "flutter": ">=3.10.0 <4.0.0",
+      "dependencies": {},
+      "createdAt": "2025-12-25T09:17:36.340689",
+      "updatedAt": "2025-12-25T09:17:36.340729"
     }
   ]
 }
