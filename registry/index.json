@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated": "2025-12-25T03:58:19.223123",
+  "updated": "2025-12-25T06:45:52.266480",
   "registry": "https://github.com/thihasithuleon369kk-rgb/ui_registry",
   "packs": [
     {
@@ -89,6 +89,24 @@
       "updatedAt": "2025-12-25T03:46:24Z"
     },
     {
+      "id": "new_pack",
+      "name": "New UI Pack",
+      "description": "",
+      "version": "1.0.0",
+      "author": "",
+      "authorUrl": "",
+      "license": "MIT",
+      "tags": [],
+      "downloads": 0,
+      "downloadUrl": "https://github.com/thihasithuleon369kk-rgb/ui_registry/raw/main/packs/new_pack/1.0.0/bundle.zip",
+      "previews": [],
+      "screens": [],
+      "flutter": ">=3.10.0 <4.0.0",
+      "dependencies": {},
+      "createdAt": "2025-12-25T06:45:48.844793",
+      "updatedAt": "2025-12-25T06:45:48.844828"
+    },
+    {
       "id": "new_pack_test_r",
       "name": "New UI Pack",
       "description": "fas",
@@ -111,8 +129,8 @@
       ],
       "flutter": ">=3.10.0 <4.0.0",
       "dependencies": {},
-      "createdAt": "2025-12-25T03:58:17.803079",
-      "updatedAt": "2025-12-25T03:58:17.803115"
+      "createdAt": "2025-12-25T06:45:50.082665",
+      "updatedAt": "2025-12-25T06:45:50.082710"
     },
     {
       "id": "new_pack_my",
@@ -158,8 +176,8 @@
       ],
       "flutter": ">=3.10.0 <4.0.0",
       "dependencies": {},
-      "createdAt": "2025-12-25T03:58:17.413250",
-      "updatedAt": "2025-12-25T03:58:17.413286"
+      "createdAt": "2025-12-25T06:45:49.379681",
+      "updatedAt": "2025-12-25T06:45:49.379719"
     },
     {
       "id": "new_packfdsxd",
@@ -184,8 +202,8 @@
       ],
       "flutter": ">=3.10.0 <4.0.0",
       "dependencies": {},
-      "createdAt": "2025-12-25T03:58:18.588680",
-      "updatedAt": "2025-12-25T03:58:18.588721"
+      "createdAt": "2025-12-25T06:45:51.179306",
+      "updatedAt": "2025-12-25T06:45:51.179345"
     },
     {
       "id": "new_packfasla",
@@ -210,8 +228,8 @@
       ],
       "flutter": ">=3.10.0 <4.0.0",
       "dependencies": {},
-      "createdAt": "2025-12-25T03:58:18.205547",
-      "updatedAt": "2025-12-25T03:58:18.205580"
+      "createdAt": "2025-12-25T06:45:50.632777",
+      "updatedAt": "2025-12-25T06:45:50.632819"
     },
     {
       "id": "fsa",
@@ -236,8 +254,8 @@
       ],
       "flutter": ">=3.10.0 <4.0.0",
       "dependencies": {},
-      "createdAt": "2025-12-25T03:58:17.058348",
-      "updatedAt": "2025-12-25T03:58:17.059683"
+      "createdAt": "2025-12-25T06:45:48.255803",
+      "updatedAt": "2025-12-25T06:45:48.257161"
     }
   ]
 }
