@@ -1,13 +1,13 @@
 {
   "version": "1.0",
-  "updated": "2025-12-24T22:28:00.202981",
+  "updated": "2025-12-25T03:58:19.223123",
   "registry": "https://github.com/thihasithuleon369kk-rgb/ui_registry",
   "packs": [
     {
       "id": "onboarding_pack",
       "name": "Modern Onboarding Pack",
       "description": "Beautiful onboarding screens with smooth page transitions and modern design",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "author": "UI Marketplace Team",
       "authorUrl": "https://github.com/your-org",
       "license": "MIT",
@@ -19,36 +19,74 @@
         "animated"
       ],
       "downloads": 0,
-      "downloadUrl": "https://github.com/thihasithuleon369kk-rgb/ui_registry/releases/download/onboarding_pack-1.0.2/bundle.zip",
+      "downloadUrl": "https://github.com/thihasithuleon369kk-rgb/ui_registry/releases/download/onboarding_pack-1.0.3/bundle.zip",
       "previews": [
-        "https://github.com/thihasithuleon369kk-rgb/ui_registry/releases/download/onboarding_pack-1.0.2/preview_1.png"
+        "https://github.com/thihasithuleon369kk-rgb/ui_registry/releases/download/onboarding_pack-1.0.3/preview_1.png"
       ],
       "screens": [
         {
           "name": "WelcomeScreen",
           "route": "/welcome",
           "file": "screens/welcome_screen.dart",
-          "description": "Initial welcome screen with app branding"
+          "description": "Initial welcome screen with app branding",
+          "widgets": [
+            {
+              "id": "w_0",
+              "name": "Text",
+              "type": 1,
+              "x": 27.5,
+              "y": 20.0,
+              "width": 320.0,
+              "height": 40.0,
+              "properties": {
+                "text": "Get Started"
+              }
+            }
+          ]
         },
         {
           "name": "FeaturesScreen",
           "route": "/features",
           "file": "screens/features_screen.dart",
-          "description": "Feature highlight carousel"
+          "description": "Feature highlight carousel",
+          "widgets": [
+            {
+              "id": "w_0",
+              "name": "Icon",
+              "type": 2,
+              "x": 167.5,
+              "y": 20.0,
+              "width": 40.0,
+              "height": 40.0,
+              "properties": {}
+            }
+          ]
         },
         {
           "name": "GetStartedScreen",
           "route": "/get-started",
           "file": "screens/get_started_screen.dart",
-          "description": "Final call-to-action screen"
+          "description": "Final call-to-action screen",
+          "widgets": [
+            {
+              "id": "w_0",
+              "name": "Icon",
+              "type": 2,
+              "x": 167.5,
+              "y": 20.0,
+              "width": 40.0,
+              "height": 40.0,
+              "properties": {}
+            }
+          ]
         }
       ],
       "flutter": ">=3.10.0 <4.0.0",
       "dependencies": {
         "smooth_page_indicator": "^1.1.0"
       },
-      "createdAt": "2025-12-24T19:56:58Z",
-      "updatedAt": "2025-12-24T19:56:58Z"
+      "createdAt": "2025-12-25T03:46:24Z",
+      "updatedAt": "2025-12-25T03:46:24Z"
     },
     {
       "id": "new_pack_test_r",
@@ -73,8 +111,55 @@
       ],
       "flutter": ">=3.10.0 <4.0.0",
       "dependencies": {},
-      "createdAt": "2025-12-24T22:27:58.745618",
-      "updatedAt": "2025-12-24T22:27:58.745646"
+      "createdAt": "2025-12-25T03:58:17.803079",
+      "updatedAt": "2025-12-25T03:58:17.803115"
+    },
+    {
+      "id": "new_pack_my",
+      "name": "New UI Pack_my",
+      "description": "",
+      "version": "1.0.0",
+      "author": "UI MarketPlace Team",
+      "authorUrl": "",
+      "license": "MIT",
+      "tags": [
+        "test"
+      ],
+      "downloads": 0,
+      "downloadUrl": "https://github.com/thihasithuleon369kk-rgb/ui_registry/raw/main/packs/new_pack_my/1.0.0/bundle.zip",
+      "previews": [],
+      "screens": [
+        {
+          "name": "example_screen",
+          "route": "/example_screen",
+          "file": "screens/example_screen.dart",
+          "widgets": []
+        },
+        {
+          "name": "visual_design_screen",
+          "route": "/visual_design_screen",
+          "file": "screens/visual_design_screen.dart",
+          "widgets": [
+            {
+              "id": "1766635039124",
+              "name": "Container 1",
+              "type": 0,
+              "x": 112,
+              "y": 112,
+              "width": 156,
+              "height": 307,
+              "properties": {
+                "color": 4294967295,
+                "borderRadius": 8
+              }
+            }
+          ]
+        }
+      ],
+      "flutter": ">=3.10.0 <4.0.0",
+      "dependencies": {},
+      "createdAt": "2025-12-25T03:58:17.413250",
+      "updatedAt": "2025-12-25T03:58:17.413286"
     },
     {
       "id": "new_packfdsxd",
@@ -99,8 +184,8 @@
       ],
       "flutter": ">=3.10.0 <4.0.0",
       "dependencies": {},
-      "createdAt": "2025-12-24T22:27:59.627488",
-      "updatedAt": "2025-12-24T22:27:59.627517"
+      "createdAt": "2025-12-25T03:58:18.588680",
+      "updatedAt": "2025-12-25T03:58:18.588721"
     },
     {
       "id": "new_packfasla",
@@ -125,8 +210,8 @@
       ],
       "flutter": ">=3.10.0 <4.0.0",
       "dependencies": {},
-      "createdAt": "2025-12-24T22:27:59.149264",
-      "updatedAt": "2025-12-24T22:27:59.149296"
+      "createdAt": "2025-12-25T03:58:18.205547",
+      "updatedAt": "2025-12-25T03:58:18.205580"
     },
     {
       "id": "fsa",
@@ -151,8 +236,8 @@
       ],
       "flutter": ">=3.10.0 <4.0.0",
       "dependencies": {},
-      "createdAt": "2025-12-24T22:27:58.335115",
-      "updatedAt": "2025-12-24T22:27:58.336489"
+      "createdAt": "2025-12-25T03:58:17.058348",
+      "updatedAt": "2025-12-25T03:58:17.059683"
     }
   ]
 }
